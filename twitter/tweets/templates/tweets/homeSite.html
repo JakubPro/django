@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Twitter Clone</title>
+</head>
+<body>
+    <h1>Welcome to Twitter Clone</h1>
+    <a href="{% url 'post' %}">Post a Tweet</a>
+    <ul>
+        {% for tweet in tweets %}
+        <li><strong>{{ tweet.user.username }}</strong>: {{ tweet.content }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
