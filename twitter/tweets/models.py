@@ -8,3 +8,13 @@ class Tweet(models.Model):
 
     def __str__(self):
         return f"{self.user.username}: {self.content[:50]}"
+
+    def likes_count(self):
+        return self.likes.count()
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    tweet = models.ForeignKey(Tweet, on_delete=models.CASCADE, related_name="likes")
+
+    def __str__(self):
+        return f"{self.user.username} liked {self.tweet.content[:50]}"
