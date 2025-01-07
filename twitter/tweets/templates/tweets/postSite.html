@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Zapostuj tweeta</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
 </head>
+
 <body>
     <h1>Zapostuj tweeta</h1>
+    <hr>
     <form method="post">
         {% csrf_token %}
         <textarea name="content" maxlength="280" rows="4" cols="50"></textarea>
-        <button type="submit">Tweet</button>
+        <button type="submit">Zapostuj</button>
+        
+        <hr>
+
+        <a href="{% url 'homeSite' %}">Powrót</a>
     </form>
 </body>
+
 </html>

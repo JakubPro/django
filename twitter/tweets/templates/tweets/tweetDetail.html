@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Tweet od użytkownika {{ tweet.user.username }} </title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
 </head>
+
 <body>
     <h1>Tweet od użytkownika {{ tweet.user.username }}</h1>
-    <p><strong>{{ tweet.content }}</strong></p>
+    <hr>
+    <div id="tweetContent">
+        <p><strong>{{ tweet.content }}</strong></p>
+    </div>
+
     <p>Zapostowany dnia: {{ tweet.timestamp }}</p>
+
+    <hr>
 
     <a href="{% url 'like_tweet' tweet.id %}">❤</a>: {{ like_count }}
 
-    <br>
+    <hr>
 
     <a href="{% url 'homeSite' %}">Powrót</a>
 </body>
+
 </html>

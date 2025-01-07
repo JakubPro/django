@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Twitter</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
 </head>
+
 <body>
     <h1>Witaj!</h1>
 
     <hr>
 
-    <a href="{% url 'loginSite' %}">Login</a> |
-    <a href="{% url 'signupSite' %}">Sing up</a>
-
+    <a href="{% url 'loginSite' %}">Log in</a> |
+    <a href="{% url 'signupSite' %}">Sing up</a> |
+    <a href="{% url 'postSite' %}">Zapostuj tweeta</a>
     <hr>
 
     <a href="?sort=desc">Sortuj od najnowszych</a> |
     <a href="?sort=asc">Sortuj od najstarszych</a> |
-    <a href="?likes=true">Sortuj od największej ilości polubień</a>
+    <a id="zapsotuj" href="?likes=true">Sortuj od największej ilości polubień</a>
 
     <hr>
-    
+
     <ul>
         {% for tweet in tweets %}
         <li>
             <strong>{{ tweet.user.username }}</strong>: {{ tweet.content }}
-            
+
             <br>
 
             <a href="{% url 'tweetDetail' tweet.id %}">Zobacz tweeta</a>
-            
+
             <br>
 
             <a href="{% url 'like_tweet' tweet.id %}?next=home">❤</a>: {{ tweet.likes_count }}
 
             <br>
             <br>
-            
+
 
         </li>
         {% endfor %}
     </ul>
-
-    <hr>
-
-    <a href="{% url 'postSite' %}">Zapostuj tweeta</a>
 </body>
+
 </html>
